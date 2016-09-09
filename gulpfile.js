@@ -5,13 +5,10 @@ var gulp = require('gulp'),
     concat = require('gulp-concat');
 
 
-var jsSources = [
-];
-
 var sassSources = ['components/sass/style.scss']
 
 gulp.task('js', function() {
-    gulp.src(jsSources) //specify source files
+    gulp.src('components/js/*.js') //specify source files
         .pipe(concat('script.js')) //specify what to do
         .pipe(browserify())
         .pipe(gulp.dest('builds/js')) //specify destination folder
@@ -29,7 +26,7 @@ gulp.task('compass', function() {
 });
 
 gulp.task('watch', function () {
-    gulp.watch(jsSources, ['js']);
+    gulp.watch('components/js/*.js', ['js']);
     gulp.watch('components/sass/*.scss', ['compass']); //Monitor all .scss files for changes
 });
 
